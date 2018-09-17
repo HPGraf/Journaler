@@ -14,7 +14,7 @@ import java.util.*
 class NoteController {
 
     @GetMapping(
-            value = "/obtain",
+            value = ["/obtain"],
             produces = [(MediaType.APPLICATION_JSON_VALUE)]
     )
     fun getNotes(): List<Note> {
