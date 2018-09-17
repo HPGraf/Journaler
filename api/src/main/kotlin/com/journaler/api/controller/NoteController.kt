@@ -3,6 +3,8 @@ package com.journaler.api.controller
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.http.MediaType
 import com.journaler.api.data.Note
+import com.journaler.api.service.NoteService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -11,18 +13,14 @@ import java.util.*
 @EnableAutoConfiguration
 class NoteController {
 
+    @Autowired
+    private lateinit var service: NoteService
+
     @GetMapping(
             produces = [(MediaType.APPLICATION_JSON_VALUE)]
     )
     fun getNotes(): List<Note> {
-        return listOf(
-                Note(UUID.randomUUID().toString(),
-                        "my first note",
-                        "this is the first message"),
-                Note(UUID.randomUUID().toString(),
-                        "my second note",
-                        "this is the second message")
-        )
+        return service.getNotes()
     }
 
     @PutMapping(
@@ -30,8 +28,7 @@ class NoteController {
             consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun insertNote(@RequestBody note: Note): Note {
-        note.id = UUID.randomUUID().toString()
-        return note
+        return service.insertNote(note)
     }
 
     @DeleteMapping(
@@ -39,17 +36,14 @@ class NoteController {
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun deleteNote(@PathVariable(name = "id") id: String): Boolean {
-        println("Removing: $id")
-        return true
+        return service.deleteNote(id)
     }
 
     @PostMapping(
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun updateNote(@RequestBody note: Note): Note {
-        note.title += " [updated] "
-        note.message += " [updated] "
-        return note
+    fun updateNote(@RequestBody note: Note): Boolean {
+        return service.updateNote(note)
     }
 }
