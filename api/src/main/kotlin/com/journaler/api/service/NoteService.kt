@@ -1,6 +1,7 @@
 package com.journaler.api.service
 
 import com.journaler.api.data.Note
+import com.journaler.api.data.NoteDTO
 import com.journaler.api.repository.NoteRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -12,11 +13,30 @@ class NoteService {
     @Autowired
     lateinit var repository: NoteRepository
 
-    fun getNotes(): Iterable<Note> = repository.findAll()
+    fun getNotes(): Iterable<NoteDTO> = repository.findAll().map { it -> NoteDTO(it) }
 
-    fun insertNote(note: Note): Note = repository.save(note)
+    fun insertNote(noteDTO: NoteDTO): NoteDTO {
+        var myNote: Note
 
-    fun deleteNote (id: String) = repository.deleteById(id)
+        myNote = repository.save(Note(
+                title = noteDTO.title,
+                message = noteDTO.message,
+                location = noteDTO.location))
 
-    fun updateNote (note: Note): Note = repository.save(note)
+        return NoteDTO(myNote)
+    }
+
+    fun deleteNote(id: String) = repository.deleteById(id)
+
+    fun updateNote(noteDTO: NoteDTO): NoteDTO {
+        var note: Note = repository.findById(noteDTO.id).get()
+
+        note.title = noteDTO.title
+        note.message = noteDTO.message
+        note.location = noteDTO.location
+        note.modified = Date()
+
+        repository.save(note)
+        return NoteDTO(note)
+    }
 }

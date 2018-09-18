@@ -2,11 +2,10 @@ package com.journaler.api.controller
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.http.MediaType
-import com.journaler.api.data.Note
+import com.journaler.api.data.NoteDTO
 import com.journaler.api.service.NoteService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import java.util.*
 
 @RestController
 @RequestMapping("/notes")
@@ -19,7 +18,7 @@ class NoteController {
     @GetMapping(
             produces = [(MediaType.APPLICATION_JSON_VALUE)]
     )
-    fun getNotes(): Iterable<Note> {
+    fun getNotes(): Iterable<NoteDTO> {
         return service.getNotes()
     }
 
@@ -27,8 +26,8 @@ class NoteController {
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun insertNote(@RequestBody note: Note): Note {
-        return service.insertNote(note)
+    fun insertNote(@RequestBody noteDTO: NoteDTO): NoteDTO {
+        return service.insertNote(noteDTO)
     }
 
     @DeleteMapping(
@@ -43,7 +42,7 @@ class NoteController {
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun updateNote(@RequestBody note: Note): Note {
-        return service.updateNote(note)
+    fun updateNote(@RequestBody noteDTO: NoteDTO): NoteDTO {
+        return service.updateNote(noteDTO)
     }
 }

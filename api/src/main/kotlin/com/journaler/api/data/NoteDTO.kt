@@ -5,7 +5,7 @@ import java.util.*
 data class NoteDTO(
         var title: String,
         var message: String,
-        var locating: String) {
+        var location: String) {
 
     lateinit var id: String
     lateinit var created: Date

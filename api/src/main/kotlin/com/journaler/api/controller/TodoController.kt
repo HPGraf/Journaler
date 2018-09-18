@@ -2,7 +2,7 @@ package com.journaler.api.controller
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.http.MediaType
-import com.journaler.api.data.Todo
+import com.journaler.api.data.TodoDTO
 import com.journaler.api.service.TodoService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -19,7 +19,7 @@ class TodoController {
     @GetMapping(
             produces = [(MediaType.APPLICATION_JSON_VALUE)]
     )
-    fun getTodos(): Iterable<Todo> {
+    fun getTodos(): Iterable<TodoDTO> {
         return service.getTodos()
     }
 
@@ -27,8 +27,8 @@ class TodoController {
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun insertTodo(@RequestBody todo: Todo): Todo {
-        return service.insertTodo(todo)
+    fun insertTodo(@RequestBody todoDTO: TodoDTO): TodoDTO {
+        return service.insertTodo(todoDTO)
     }
 
     @DeleteMapping(
@@ -44,7 +44,7 @@ class TodoController {
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun updateTodo(@RequestBody todo: Todo): Todo {
-        return service.updateTodo(todo)
+    fun updateTodo(@RequestBody todoDTO: TodoDTO): TodoDTO {
+        return service.updateTodo(todoDTO)
     }
 }
