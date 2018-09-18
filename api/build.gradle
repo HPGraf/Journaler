@@ -10,6 +10,7 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+		classpath("com.fasterxml.jackson.module:jackson-module-kotlin")
 	}
 }
 
@@ -41,6 +42,8 @@ repositories {
 
 
 dependencies {
+	runtime ('mysql:mysql-connector-java')
+	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
 	compile ('org.springframework:spring-context')
 	compile ('org.springframework: spring-aop')
 	compile('org.springframework.boot:spring-boot-starter')

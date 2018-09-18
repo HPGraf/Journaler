@@ -19,7 +19,7 @@ class NoteController {
     @GetMapping(
             produces = [(MediaType.APPLICATION_JSON_VALUE)]
     )
-    fun getNotes(): List<Note> {
+    fun getNotes(): Iterable<Note> {
         return service.getNotes()
     }
 
@@ -35,7 +35,7 @@ class NoteController {
             value = ["/{id}"],
             produces = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun deleteNote(@PathVariable(name = "id") id: String): Boolean {
+    fun deleteNote(@PathVariable(name = "id") id: String) {
         return service.deleteNote(id)
     }
 
@@ -43,7 +43,7 @@ class NoteController {
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun updateNote(@RequestBody note: Note): Boolean {
+    fun updateNote(@RequestBody note: Note): Note {
         return service.updateNote(note)
     }
 }
