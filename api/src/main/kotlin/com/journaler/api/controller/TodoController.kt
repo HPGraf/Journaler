@@ -3,6 +3,7 @@ package com.journaler.api.controller
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.http.MediaType
 import com.journaler.api.data.TodoDTO
+import com.journaler.api.data.TodoLaterThanRequest
 import com.journaler.api.service.TodoService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -21,6 +22,13 @@ class TodoController {
     )
     fun getTodos(): Iterable<TodoDTO> {
         return service.getTodos()
+    }
+    @PostMapping(
+            produces = [MediaType.APPLICATION_JSON_VALUE],
+            consumes = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getTodosLaterThan (@RequestBody payload: TodoLaterThanRequest): Iterable<TodoDTO> {
+        return service.getScheduledLaterThan(payload.date)
     }
 
     @PutMapping(

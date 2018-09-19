@@ -42,4 +42,8 @@ class TodoService {
         repository.save(todo)
         return TodoDTO(todo)
     }
+
+    fun getScheduledLaterThan(date: Date): Iterable<TodoDTO> {
+        return repository.findScheduledLaterThan(date.time).map { it -> TodoDTO(it) }
+    }
 }
