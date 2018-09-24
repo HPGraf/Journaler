@@ -23,10 +23,7 @@ class TodoController {
     fun getTodos(): Iterable<TodoDTO> {
         return service.getTodos()
     }
-    @PostMapping(
-            produces = [MediaType.APPLICATION_JSON_VALUE],
-            consumes = [MediaType.APPLICATION_JSON_VALUE]
-    )
+
     fun getTodosLaterThan (@RequestBody payload: TodoLaterThanRequest): Iterable<TodoDTO> {
         return service.getScheduledLaterThan(payload.date)
     }
