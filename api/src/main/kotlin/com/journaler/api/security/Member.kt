@@ -6,8 +6,8 @@ import javax.persistence.DiscriminatorValue
 import javax.persistence.Entity
 
 @Entity
-@DiscriminatorValue(value = "ADMIN")
-class Admin(
+@DiscriminatorValue(value = "MEMBER")
+class Member(
         id: String,
         email: String,
         pwd: String,
