@@ -52,6 +52,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-web')
 	compile('org.springframework.boot:spring-webmvc')
+	compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.2")
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 	compileOnly('org.projectlombok:lombok')

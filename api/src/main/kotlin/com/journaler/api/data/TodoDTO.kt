@@ -22,4 +22,6 @@ data class TodoDTO(
         created = todo.created
         modified = todo.modified
     }
+
+    constructor(): this("","",-1,"")
 }

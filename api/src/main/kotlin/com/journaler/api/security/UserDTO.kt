@@ -6,4 +6,5 @@ data class UserDTO (
         var firstName: String,
         var lastName: String
 ) {
+    constructor(): this("","","","")
 }

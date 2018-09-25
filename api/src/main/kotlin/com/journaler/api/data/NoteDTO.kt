@@ -21,4 +21,5 @@ data class NoteDTO(
         modified = note.modified
     }
 
+    constructor() : this("", "", "")
 }
