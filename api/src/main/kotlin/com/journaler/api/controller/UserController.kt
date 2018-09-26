@@ -17,17 +17,17 @@ class UserController {
     @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getUsers() = service.getUsers()
 
-    @PutMapping(value = "/admin",
+    @PutMapping(value = ["/admin"],
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun insertAdmin(@RequestBody user: UserDTO) = service.saveAdmin(user)
 
-    @PutMapping(value = "/member",
+    @PutMapping(value = ["/member"],
             produces = [MediaType.APPLICATION_JSON_VALUE],
             consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun insertMember(@RequestBody user: UserDTO) = service.saveMember(user)
 
-    @DeleteMapping(value = "/{id}",
+    @DeleteMapping(value = ["/{id}"],
             produces = [MediaType.APPLICATION_JSON_VALUE])
     fun deleteUser(@PathVariable(name = "id") id: String) = service.deleteUser(id)
 
