@@ -1,4 +1,4 @@
-package com.journaler.api.security
+package com.journaler.security
 
 import org.springframework.security.core.AuthenticationException
 import org.springframework.security.web.AuthenticationEntryPoint

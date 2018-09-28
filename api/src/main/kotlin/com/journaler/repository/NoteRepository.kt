@@ -1,4 +1,4 @@
-package com.journaler.api.repository
+package com.journaler.repository
 
 import com.journaler.api.data.Note
 import org.springframework.data.repository.CrudRepository

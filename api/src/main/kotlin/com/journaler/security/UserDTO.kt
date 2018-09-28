@@ -1,4 +1,4 @@
-package com.journaler.api.security
+package com.journaler.security
 
 data class UserDTO (
         var email: String,

@@ -1,4 +1,4 @@
-package com.journaler.api.repository
+package com.journaler.repository
 
 import com.journaler.api.data.Todo
 import org.springframework.data.jpa.repository.Query

@@ -1,18 +1,19 @@
 buildscript {
-	ext {
-		kotlinVersion = '1.2.71'
-		kotlinJacksonVersion ='2.9.4.1'
-		springBootVersion = '2.0.5.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-		classpath("com.fasterxml.jackson.module:jackson-module-kotlin:${kotlinJacksonVersion}")
-	}
+    ext {
+        kotlinVersion = '1.2.71'
+        kotlinJacksonVersion = '2.9.4.1'
+        springBootVersion = '2.0.5.RELEASE'
+        reactorVersion = '2.0.8 RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+        classpath("com.fasterxml.jackson.module:jackson-module-kotlin:${kotlinJacksonVersion}")
+    }
 }
 
 apply plugin: 'kotlin'
@@ -25,37 +26,40 @@ group = 'com.journaler'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 compileKotlin {
-	kotlinOptions {
-		freeCompilerArgs = ["-Xjsr305=strict"]
-		jvmTarget = "1.8"
-	}
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
 }
 compileTestKotlin {
-	kotlinOptions {
-		freeCompilerArgs = ["-Xjsr305=strict"]
-		jvmTarget = "1.8"
-	}
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
 }
 
 
 dependencies {
-	runtime ('mysql:mysql-connector-java')
-	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
-	compile ('org.springframework:spring-context')
-	compile ('org.springframework: spring-aop')
-	compile('org.springframework.boot:spring-boot-starter')
+    runtime('mysql:mysql-connector-java')
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile('org.springframework:spring-context')
+    compile('org.springframework: spring-aop')
+    compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-web')
-	compile('org.springframework.boot:spring-webmvc')
-	compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.2")
-	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
-	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
-	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-web')
+    compile('org.springframework.boot:spring-webmvc')
+    compile("com.fasterxml.jackson.module:jackson-module-kotlin:${kotlinJacksonVersion}")
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+    compile("io.projectreactor:reactor-bus:${reactorVersion}")
+    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

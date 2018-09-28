@@ -1,4 +1,4 @@
-package com.journaler.api.security
+package com.journaler.security
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty

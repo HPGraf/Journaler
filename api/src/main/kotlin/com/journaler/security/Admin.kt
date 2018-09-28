@@ -1,4 +1,4 @@
-package com.journaler.api.security
+package com.journaler.security
 
 import com.journaler.api.security.User
 import java.util.*

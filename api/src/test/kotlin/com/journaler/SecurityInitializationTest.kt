@@ -1,13 +1,14 @@
-package com.journaler.api
+package com.journaler
 
-import com.journaler.api.security.Admin
-import com.journaler.api.security.Member
-import com.journaler.api.security.UserDTO
-import com.journaler.api.service.UserService
+import com.journaler.security.Admin
+import com.journaler.security.Member
+import com.journaler.service.UserService
+import com.journaler.security.UserDTO
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
 import java.lang.RuntimeException

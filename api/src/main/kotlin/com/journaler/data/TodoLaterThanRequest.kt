@@ -1,4 +1,4 @@
-package com.journaler.api.data
+package com.journaler.data
 
 import java.util.*
 

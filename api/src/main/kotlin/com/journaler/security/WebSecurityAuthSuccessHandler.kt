@@ -1,4 +1,4 @@
-package com.journaler.api.security
+package com.journaler.security
 
 import org.springframework.security.core.Authentication
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler

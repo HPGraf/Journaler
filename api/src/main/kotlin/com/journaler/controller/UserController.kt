@@ -1,4 +1,4 @@
-package com.journaler.api.controller
+package com.journaler.controller
 
 import com.journaler.api.security.User
 import com.journaler.api.security.UserDTO

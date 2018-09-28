@@ -1,4 +1,4 @@
-package com.journaler.api.service
+package com.journaler.service
 
 import com.journaler.api.repository.UserRepository
 import com.journaler.api.security.*

@@ -1,4 +1,4 @@
-package com.journaler.api.security
+package com.journaler.security
 
 import com.journaler.api.service.UserService
 import org.springframework.beans.factory.annotation.Autowired

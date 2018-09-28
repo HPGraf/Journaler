@@ -1,4 +1,4 @@
-package com.journaler.api.data
+package com.journaler.data
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import org.hibernate.annotations.CreationTimestamp
@@ -8,9 +8,9 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "todo")
+@Table(name = "note")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-data class Todo(
+data class Note(
         @Id
         @GeneratedValue(generator = "uuid2")
         @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -22,9 +22,8 @@ data class Todo(
         var modified: Date = Date(),
         var title: String,
         var message: String,
-        var schedule: Long,
         var location: String = "") {
 
-    constructor() : this("", Date() , Date() ,"", "", -1, "")
+    constructor() : this("", Date(), Date(), "", "", "")
 
 }

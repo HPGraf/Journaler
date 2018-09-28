@@ -1,4 +1,4 @@
-package com.journaler.api
+package com.journaler
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

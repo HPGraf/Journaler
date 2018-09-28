@@ -1,4 +1,4 @@
-package com.journaler.api.controller
+package com.journaler.controller
 
 // import com.fasterxml.jackson.module.kotlin.*
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration

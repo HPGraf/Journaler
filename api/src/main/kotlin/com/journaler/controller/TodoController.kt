@@ -1,4 +1,4 @@
-package com.journaler.api.controller
+package com.journaler.controller
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.http.MediaType

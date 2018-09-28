@@ -1,4 +1,4 @@
-package com.journaler.api
+package com.journaler
 
 import org.junit.Test
 import org.junit.runner.RunWith
